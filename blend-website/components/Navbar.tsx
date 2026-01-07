@@ -9,41 +9,48 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-transparent">
+    <header className="sticky top-6 z-40 w-full bg-transparent">
       <div className="container-max">
-        <div className="mt-6 flex items-center justify-between rounded-full bg-[#0b0c13] px-4 py-3 text-white shadow-pill ring-1 ring-[#1b1d29]">
-          <div className="flex items-center gap-3">
-            <Image src="/logo.png" alt="Blend logo" width={56} height={20} className="h-5 w-auto" />
-          </div>
+        <div className="mt-6">
+          <div className="relative rounded-full bg-gradient-to-r from-[#6bd688] via-[#6bd688] via-40% to-[#f36fb4] p-[2px] shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
+            <div className="flex items-center justify-between rounded-full bg-[#111216] px-5 py-3 text-white">
+              <div className="flex items-center gap-3 pl-1">
+                <Image src="/logo.png" alt="Blend logo" width={72} height={24} className="h-6 w-auto" />
+              </div>
 
-          <nav className="hidden items-center gap-6 text-sm font-medium text-white/80 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="transition-colors hover:text-white"
+              <nav className="hidden items-center gap-8 text-base font-semibold text-white/80 md:flex">
+                {navLinks.map((link, idx) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className={`transition-colors hover:text-white ${idx === 0 ? "text-white" : ""}`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+
+              <div className="hidden md:block">
+                <Link
+                  href="#contact"
+                  className="inline-flex h-11 items-center justify-center rounded-full border-2 border-black/20 bg-gradient-to-r from-[#fa5fa5] to-[#f847a6] px-6 text-base font-semibold text-white shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
+                >
+                  Contact
+                </Link>
+              </div>
+
+              <button
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
+                onClick={() => setOpen((prev) => !prev)}
+                aria-label="Toggle navigation"
               >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <Link href="#contact" className="pill-button pill-primary">
-              Contact Us
-            </Link>
+                <span className="block h-0.5 w-5 bg-white"></span>
+                <span className="mt-1 block h-0.5 w-5 bg-white"></span>
+                <span className="mt-1 block h-0.5 w-4 bg-white"></span>
+              </button>
+            </div>
           </div>
-
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
-            onClick={() => setOpen((prev) => !prev)}
-            aria-label="Toggle navigation"
-          >
-            <span className="block h-0.5 w-5 bg-white"></span>
-            <span className="mt-1 block h-0.5 w-5 bg-white"></span>
-            <span className="mt-1 block h-0.5 w-4 bg-white"></span>
-          </button>
         </div>
 
         {open && (
