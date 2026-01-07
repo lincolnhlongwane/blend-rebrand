@@ -37,14 +37,14 @@ export default function Hero() {
               />
             </div>
 
-            <div className="absolute left-[-42px] top-1/2 hidden -translate-y-1/2 md:flex">
+            {/* <div className="absolute left-[-42px] top-1/2 hidden -translate-y-1/2 md:flex">
               <button
                 className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-base shadow-[0_10px_20px_rgba(0,0,0,0.3)] ring-2 ring-white"
                 aria-label="Say Hi"
               >
                 👋
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
