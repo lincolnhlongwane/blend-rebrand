@@ -61,7 +61,7 @@ export default function AboutLocations() {
   );
 
   return (
-    <section id="about" className="bg-transparent py-16">
+    <section id="about" className="bg-white py-16">
       <div className="container-max flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
         <div className="relative flex h-full w-full justify-center md:w-1/2">
           <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">

@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-6 z-40 w-full bg-transparent">
+    <header className="sticky top-6 z-40 w-full ">
       <div className="container-max">
         <div className="mt-6">
           <div className="relative rounded-r-full rounded-l-none bg-gradient-to-r from-[#6bd688] via-[#6bd688] via-40% to-[#f36fb4] p-[2px] shadow-[0_18px_50px_rgba(0,0,0,0.35)]">

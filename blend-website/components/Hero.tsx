@@ -28,13 +28,12 @@ export default function Hero() {
 
           <div className="relative w-full max-w-5xl rounded-[32px] bg-[#0c0c0f]/80 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.4)] ring-1 ring-white/5">
             <div className="relative overflow-hidden rounded-[30px] bg-black">
-              <Image
-                src={heroContent.media}
-                alt="Hero visual"
-                width={1280}
-                height={720}
-                className="h-[420px] w-full rounded-[30px] object-cover"
-                priority
+              <iframe
+                src="https://www.youtube.com/embed/1ZYbU82GVz4"
+                title="Relaxing music"
+                className="h-[420px] w-full rounded-[30px]"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
             </div>
 
