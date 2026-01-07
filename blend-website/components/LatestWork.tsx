@@ -3,43 +3,56 @@ import { latestWork } from "@/lib/data";
 
 export default function LatestWork() {
   return (
-    <section id="work" className="relative overflow-hidden bg-[#0d0f15] py-16 text-white">
-      <div className="absolute -left-24 top-10 h-80 w-80 rounded-full bg-gradient-to-br from-white/10 to-white/0 blur-3xl" />
-      <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-gradient-to-br from-pink-500/20 to-transparent blur-3xl" />
-      <div className="container-max relative z-10 flex flex-col gap-8 py-14">
-        <div className="relative flex flex-col gap-2 text-left">
-          <div className="absolute -left-10 -top-6 h-32 w-32 rounded-full bg-gradient-to-br from-white/15 to-white/0 blur-2xl" />
-          <h2 className="text-4xl font-semibold leading-tight">{latestWork.title}</h2>
-          <button className="pill-button pill-primary self-start text-sm font-semibold">
-            {latestWork.cta}
+    <section id="work" className="relative overflow-hidden py-16 text-white">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/latest-work/gradients.png"
+          alt="Decorative gradients"
+          fill
+          priority
+          className="object-cover opacity-100"
+          sizes="100vw"
+        />
+      </div>
+      <div className="absolute inset-0 -z-5 bg-[#0d0f15]/85" />
+      <div className="container-max relative z-10 flex items-center gap-6 py-6">
+        <div className="relative w-full max-w-[320px]">
+          <h2 className="text-5xl font-bold leading-[1.1] text-white">{latestWork.title}</h2>
+          <button className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#43d1c2] to-[#f06fa9] px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_26px_rgba(0,0,0,0.25)]">
+            <span>View Case Studies</span>
+            <span className="text-lg">⚡</span>
           </button>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+
+        <div className="grid flex-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {latestWork.items.map((item) => (
             <div
               key={item.client}
-              className="group relative overflow-hidden rounded-[32px] bg-white/5 shadow-xl ring-1 ring-white/10"
+              className="group relative overflow-hidden rounded-[28px] bg-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
             >
               <Image
                 src={item.image}
                 alt={item.client}
                 width={900}
                 height={1400}
-                className="h-[440px] w-full object-cover"
+                className="h-[520px] w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/60" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
-                <div className="text-2xl font-semibold">{item.client}</div>
-                <div className="mt-3 flex gap-2 text-xs font-semibold uppercase tracking-wide">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-white/90 px-3 py-1 text-[#0c0c0f] shadow"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-black/20 to-black/60" />
+              <div className="absolute left-0 right-0 top-0 flex items-center justify-between px-4 pt-4">
+                <div className="text-3xl font-semibold text-white drop-shadow-lg">{item.client}</div>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/85 text-[#0c0c0f] shadow">
+                  ▶
                 </div>
+              </div>
+              <div className="absolute bottom-4 left-0 right-0 flex flex-col items-start gap-2 px-4">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-[#35373b]/90 px-4 py-2 text-sm font-semibold text-white shadow-[0_8px_16px_rgba(0,0,0,0.2)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
