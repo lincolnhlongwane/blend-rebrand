@@ -64,8 +64,15 @@ export default function AboutLocations() {
     <section id="about" className="bg-transparent py-16">
       <div className="container-max flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
         <div className="relative flex h-full w-full justify-center md:w-1/2">
-          <div className="absolute -left-10 -top-6 h-32 w-32 rounded-full bg-gradient-to-br from-green-200/30 to-blue-200/25 blur-3xl" />
-          <div className="absolute -right-8 bottom-8 h-36 w-36 rounded-full bg-gradient-to-br from-pink-200/30 to-purple-200/25 blur-3xl" />
+          <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
+            <Image
+              src="/gradients.png"
+              alt="Decorative background"
+              width={900}
+              height={900}
+              className="h-[620px] w-[620px] max-w-none object-contain"
+            />
+          </div>
 
           <div className="relative w-full max-w-xl">
             {stackImages.map(({ slide, className }, idx) => (
