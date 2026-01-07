@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { contactSection, footerContent } from "@/lib/data";
 
 export default function Footer() {
@@ -6,9 +7,7 @@ export default function Footer() {
       <div className="container-max grid gap-8 md:grid-cols-[1.2fr,1fr,1fr]">
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-green-300 to-pink-400 text-[#0c0c0f]">
-              BL
-            </div>
+            <Image src="/logo.png" alt="Blend logo" width={80} height={28} className="h-7 w-auto" />
             BLEND
           </div>
           <p className="text-sm text-white/70">{contactSection.address}</p>

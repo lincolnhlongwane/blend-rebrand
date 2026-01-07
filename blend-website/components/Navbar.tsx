@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { navLinks } from "@/lib/data";
@@ -12,12 +13,7 @@ export default function Navbar() {
       <div className="container-max">
         <div className="mt-6 flex items-center justify-between rounded-full bg-[#0b0c13] px-4 py-3 text-white shadow-pill ring-1 ring-[#1b1d29]">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-green-300 to-pink-400 text-sm font-semibold text-[#0c0c0f]">
-              BL
-            </div>
-            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-white/70">
-              BLEND
-            </div>
+            <Image src="/logo.png" alt="Blend logo" width={56} height={20} className="h-5 w-auto" />
           </div>
 
           <nav className="hidden items-center gap-6 text-sm font-medium text-white/80 md:flex">
