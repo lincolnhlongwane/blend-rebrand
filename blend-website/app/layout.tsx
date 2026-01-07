@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Blend",
+  title: "Blend Global",
   description:
     "Blend empowers connections globally through events, digital marketing, and immersive experiences.",
 };
