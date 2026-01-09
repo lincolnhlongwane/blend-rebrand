@@ -103,17 +103,17 @@ export default function AboutLocations() {
           </div>
         </div>
 
-        <div className="flex w-full flex-col gap-5 text-[#1a1a1a] md:w-1/2">
+        <div className="flex w-full flex-col gap-4 text-[#1a1a1a] md:w-1/2">
           <h3 className="text-2xl font-semibold text-[#1d1d1f]">{current.title}</h3>
           <h4 className="text-xl font-semibold text-[#2d2d2f]">{current.subtitle}</h4>
           <p className="max-w-xl text-base leading-relaxed text-[#3c3f46]">{current.description}</p>
 
-          <div className="mt-4 text-5xl font-semibold text-[#1b1b1d]">
+          <div className="mt-0 text-5xl font-semibold text-[#1b1b1d]">
             {current.statValue}
-            <div className="mt-1 text-xl font-semibold text-[#2e2f33]">{current.statLabel}</div>
+            <div className="mt-0 text-xl font-semibold text-[#2e2f33]">{current.statLabel}</div>
           </div>
 
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-0 flex items-center gap-4">
             <button
               onClick={handlePrev}
               aria-label="Previous about slide"

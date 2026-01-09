@@ -2,7 +2,7 @@
 
 :root {
   --background: black;
-  --foreground: black;
+  --foreground: #f9fafb;
 }
 
 @theme inline {
@@ -160,4 +160,134 @@ a {
 
 .shadow-light {
   box-shadow: 0 18px 48px rgba(16, 17, 23, 0.1);
+}
+
+.container-custom {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.bg-background {
+  background: var(--background);
+}
+
+.bg-light {
+  background: #ffffff;
+}
+
+.bg-dark {
+  background: #0b0b0d;
+}
+
+.bg-dark-surface {
+  background: #1a1a1d;
+}
+
+.bg-card {
+  background: #ffffff;
+}
+
+.bg-accent {
+  background: #1ccfa5;
+}
+
+.bg-accent\/10 {
+  background: rgba(28, 207, 165, 0.1);
+}
+
+.bg-accent\/20 {
+  background: rgba(28, 207, 165, 0.2);
+}
+
+.bg-pink\/10 {
+  background: rgba(244, 114, 182, 0.1);
+}
+
+.bg-pink\/20 {
+  background: rgba(244, 114, 182, 0.2);
+}
+
+.text-foreground {
+  color: #111111;
+}
+
+.text-muted-foreground {
+  color: #6c6f75;
+}
+
+.text-primary-foreground {
+  color: #f9fafb;
+}
+
+.text-primary-foreground\/70 {
+  color: rgba(249, 250, 251, 0.7);
+}
+
+.text-primary-foreground\/60 {
+  color: rgba(249, 250, 251, 0.6);
+}
+
+.text-primary-foreground\/50 {
+  color: rgba(249, 250, 251, 0.5);
+}
+
+.text-accent {
+  color: #1ccfa5;
+}
+
+.text-pink {
+  color: #f472b6;
+}
+
+.border-border {
+  border-color: #e5e7eb;
+}
+
+.border-primary-foreground\/10 {
+  border-color: rgba(249, 250, 251, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #f472b6 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.85;
+}
+
+.gradient-orb-pink {
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.55) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.gradient-orb-cyan {
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.5) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 12s ease-in-out infinite;
+  animation-delay: 1.5s;
 }
