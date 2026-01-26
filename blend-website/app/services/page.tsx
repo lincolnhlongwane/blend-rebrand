@@ -111,7 +111,7 @@ const ServicesPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] bg-dark overflow-hidden flex items-center pt-0">
+      <section className="relative -mt-12 min-h-[70vh] bg-dark overflow-hidden flex items-center pt-0">
         {/* Gradient Orbs */}
         <div className="gradient-orb gradient-orb-pink w-[400px] h-[400px] -top-32 -left-32 animate-float" />
         <div className="gradient-orb gradient-orb-cyan w-[300px] h-[300px] top-1/2 right-0 animate-float-delayed" />
