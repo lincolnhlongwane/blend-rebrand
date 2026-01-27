@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -7,6 +8,7 @@ type WorkItem = {
   project: string;
   image: string;
   tags: string[];
+  slug: string;
 };
 
 const workItems: WorkItem[] = [
@@ -15,24 +17,28 @@ const workItems: WorkItem[] = [
     project: "Project Name",
     image: "/placeholders/work-google.svg",
     tags: ["Event Management", "Photography", "Videography"],
+    slug: "google",
   },
   {
     title: "Deloitte",
     project: "Project Name",
     image: "/placeholders/work-deloitte.svg",
     tags: ["Social Media", "Staffing", "Web Development"],
+    slug: "deloitte",
   },
   {
     title: "Geberit",
     project: "Project Name",
     image: "/placeholders/work-geberit.svg",
     tags: ["Videography", "Photography", "Animation"],
+    slug: "geberit",
   },
   {
     title: "Shoprite",
     project: "Project Name",
     image: "/placeholders/work-deloitte.svg",
     tags: ["Swag and Gifting", "Email Marketing", "Social Media"],
+    slug: "shoprite",
   },
 ];
 
@@ -68,8 +74,9 @@ export default function WorkPage() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {workItems.map((item) => (
-            <div
+            <Link
               key={item.title}
+              href={`/work/${item.slug}`}
               className="relative overflow-hidden rounded-[24px] bg-white/5 shadow-[0_18px_48px_rgba(0,0,0,0.4)]"
             >
               <Image
@@ -94,7 +101,7 @@ export default function WorkPage() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
