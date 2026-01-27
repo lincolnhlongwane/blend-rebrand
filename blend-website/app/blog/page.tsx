@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -8,6 +9,7 @@ type BlogPost = {
   excerpt: string;
   image: string;
   tags: string[];
+  slug: string;
 };
 
 const posts: BlogPost[] = [
@@ -17,6 +19,7 @@ const posts: BlogPost[] = [
     excerpt: "Discover how thoughtful design transforms user experience and drives business success.",
     image: "/placeholders/blog-1.svg",
     tags: ["Design", "Research", "Presentation"],
+    slug: "how-does-design-even-help",
   },
   {
     title: "The thing about events",
@@ -24,6 +27,7 @@ const posts: BlogPost[] = [
     excerpt: "Unravel the unique aspects that make events a powerful tool for connection and impact.",
     image: "/placeholders/blog-2.svg",
     tags: ["Design", "Research", "Presentation"],
+    slug: "the-thing-about-events",
   },
   {
     title: "How to really measure productivity",
@@ -31,6 +35,7 @@ const posts: BlogPost[] = [
     excerpt: "Explore effective techniques to quantify productivity and enhance your team's performance.",
     image: "/placeholders/blog-3.svg",
     tags: ["Design", "Research", "Presentation"],
+    slug: "how-to-really-measure-productivity",
   },
   {
     title: "To VR or not to VR",
@@ -38,6 +43,7 @@ const posts: BlogPost[] = [
     excerpt: "Delve into the pros and cons of virtual reality and its potential in modern applications.",
     image: "/placeholders/blog-4.svg",
     tags: ["Design", "Research", "Presentation"],
+    slug: "to-vr-or-not-to-vr",
   },
 ];
 
@@ -78,7 +84,7 @@ export default function BlogPage() {
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
           {posts.map((post) => (
-            <div key={post.title} className="flex flex-col gap-3">
+            <Link key={post.title} href={`/blog/${post.slug}`} className="flex flex-col gap-3">
               <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
                 <Image
                   src={post.image}
@@ -101,7 +107,7 @@ export default function BlogPage() {
                   </span>
                 ))}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

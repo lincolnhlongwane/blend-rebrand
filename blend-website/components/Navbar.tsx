@@ -32,7 +32,7 @@ export default function Navbar() {
 
               <div className="hidden md:block">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex h-11 items-center justify-center rounded-full border-2 border-black/20 bg-gradient-to-r from-[#fa5fa5] to-[#f847a6] px-6 text-base font-semibold text-white shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
                 >
                   Contact

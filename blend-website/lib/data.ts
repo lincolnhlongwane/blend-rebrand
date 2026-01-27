@@ -1,9 +1,8 @@
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Our Work", href: "#work" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Our Work", href: "/work" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const heroContent = {
