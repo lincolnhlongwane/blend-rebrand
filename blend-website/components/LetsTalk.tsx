@@ -1,10 +1,14 @@
+"use client";
+
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { contactSection } from "@/lib/data";
 
 export default function LetsTalk() {
   return (
     <section id="contact" className="bg-white py-16">
       <div className="container-max grid gap-10 md:grid-cols-[1fr,1.1fr]">
-        <div className="flex flex-col gap-6">
+        <Reveal className="flex flex-col gap-6">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 rounded-full bg-gradient-to-r from-green-300 to-pink-400" />
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#9aa0ac]">
@@ -36,20 +40,22 @@ export default function LetsTalk() {
             <span className="text-sm font-semibold text-[#6c6f77]">Socials</span>
             <div className="flex gap-3">
               {contactSection.socials.map((social) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.href}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0f0f12] text-sm font-semibold text-white shadow-pill"
                   aria-label={social.label}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   {social.label[0]}
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="rounded-[28px] bg-white p-6 shadow-light ring-1 ring-black/5">
+        <Reveal delay={0.05} className="rounded-[28px] bg-white p-6 shadow-light ring-1 ring-black/5">
           <form className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <label className="text-sm font-semibold text-[#6c6f77]" htmlFor="firstName">
@@ -88,12 +94,17 @@ export default function LetsTalk() {
               />
             </div>
             <div className="md:col-span-2 flex justify-end">
-              <button type="submit" className="pill-button pill-dark px-8">
+              <motion.button
+                type="submit"
+                className="pill-button pill-dark px-8"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
                 Submit
-              </button>
+              </motion.button>
             </div>
           </form>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,4 +1,8 @@
-import { ArrowRight, Play, Sparkles, Zap, Globe, Video, Camera, Palette, Code, Radio, Users, Star, MapPin, Utensils, UserCheck, Megaphone } from "lucide-react";
+"use client";
+
+import { ArrowRight, Play, Sparkles, Zap, Globe, Video, Camera, Palette, Code, Radio, Users, Star, Utensils, UserCheck, Megaphone } from "lucide-react";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 // import { Button } from "@/components/ui/button";
 import Header from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -117,7 +121,7 @@ const ServicesPage = () => {
         <div className="gradient-orb gradient-orb-cyan w-[300px] h-[300px] top-1/2 right-0 animate-float-delayed" />
         
         <div className="container-custom section-padding relative z-10 py-20">
-          <div className="max-w-3xl">
+          <Reveal className="max-w-3xl">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm mb-6">
               <Sparkles className="w-4 h-4" />
               Our Services
@@ -130,34 +134,47 @@ const ServicesPage = () => {
               From digital innovation to unforgettable experiences, we offer comprehensive solutions that elevate your brand and captivate your audience.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(17,203,155,0.35)]">
+              <motion.button
+                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(17,203,155,0.35)]"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
                 Get Started
-              </button>
-              <button className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white/90">
+              </motion.button>
+              <motion.button
+                className="flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white/90"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
                 <Play className="w-4 h-4" />
                 Watch Showreel
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Experiential Services Section */}
       <section className="py-20 md:py-32 bg-dark">
         <div className="container-custom section-padding">
-          <div className="flex items-center gap-3 mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">Experiential</h2>
-            <span className="text-pink text-2xl">✦</span>
-          </div>
-          <p className="text-primary-foreground/70 text-lg mb-12 max-w-2xl">
-            Immersive experiences that create lasting memories and forge powerful emotional connections with your audience.
-          </p>
+          <Reveal>
+            <div className="flex items-center gap-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">Experiential</h2>
+              <span className="text-pink text-2xl">✦</span>
+            </div>
+            <p className="text-primary-foreground/70 text-lg mb-12 max-w-2xl">
+              Immersive experiences that create lasting memories and forge powerful emotional connections with your audience.
+            </p>
+          </Reveal>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {experientialServices.map((service, index) => (
-              <div
+              <Reveal key={service.title} delay={0.03 * index}>
+                <motion.div
                 key={service.title}
                 className="group p-6 rounded-2xl bg-dark-surface border border-primary-foreground/10 hover:border-pink/50 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
               >
                 <div className="w-12 h-12 rounded-xl bg-pink/10 flex items-center justify-center mb-4 group-hover:bg-pink/20 transition-colors">
                   <service.icon className="w-6 h-6 text-pink" />
@@ -176,11 +193,15 @@ const ServicesPage = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-pink opacity-0 group-hover:opacity-100 transition-opacity">
+                <motion.button
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-pink opacity-0 group-hover:opacity-100 transition-opacity"
+                  whileHover={{ x: 4 }}
+                >
                   Learn More
                   <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -189,19 +210,24 @@ const ServicesPage = () => {
       {/* Digital Services Section */}
       <section className="py-20 md:py-32 bg-light">
         <div className="container-custom section-padding">
-          <div className="flex items-center gap-3 mb-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Digital</h2>
-            <span className="text-accent text-2xl">✦</span>
-          </div>
-          <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
-            Innovative digital solutions that transform your ideas into powerful visual stories and experiences.
-          </p>
+          <Reveal>
+            <div className="flex items-center gap-3 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">Digital</h2>
+              <span className="text-accent text-2xl">✦</span>
+            </div>
+            <p className="text-muted-foreground text-lg mb-12 max-w-2xl">
+              Innovative digital solutions that transform your ideas into powerful visual stories and experiences.
+            </p>
+          </Reveal>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {digitalServices.map((service, index) => (
-              <div
+              <Reveal key={service.title} delay={0.03 * index}>
+                <motion.div
                 key={service.title}
                 className="group p-6 rounded-2xl bg-card border border-border hover:border-accent/50 hover:shadow-lg transition-all duration-300"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
               >
                 <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <service.icon className="w-6 h-6 text-accent" />
@@ -220,11 +246,15 @@ const ServicesPage = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                <motion.button
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity"
+                  whileHover={{ x: 4 }}
+                >
                   Learn More
                   <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
+                </motion.button>
+              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -237,7 +267,7 @@ const ServicesPage = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-foreground" />
         </div>
         
-        <div className="container-custom section-padding relative z-10 text-center">
+        <Reveal className="container-custom section-padding relative z-10 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
             Ready to Create Something<br />
             <span className="text-gradient">Extraordinary?</span>
@@ -246,14 +276,22 @@ const ServicesPage = () => {
             Let&apos;s discuss how we can bring your vision to life with our comprehensive suite of services.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(0,0,0,0.2)]">
+            <motion.button
+              className="rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(0,0,0,0.2)]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
               Start a Project
-            </button>
-            <button className="rounded-full border border-black/15 px-6 py-3 text-sm font-semibold text-black">
+            </motion.button>
+            <motion.button
+              className="rounded-full border border-black/15 px-6 py-3 text-sm font-semibold text-black"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
               View Our Work
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <Footer />

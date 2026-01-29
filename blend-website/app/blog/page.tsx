@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
+import { MotionLink } from "@/components/MotionLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -56,71 +60,89 @@ export default function BlogPage() {
       <Navbar />
       <div className="container-max pb-16 pt-12">
         <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <div className="flex flex-col gap-3">
+          <Reveal className="flex flex-col gap-3">
             <h1 className="text-4xl font-semibold leading-tight sm:text-[2.6rem]">The world of events and digital</h1>
             <div className="flex flex-wrap items-center gap-3">
               {filters.map((filter) => (
-                <button
+                <motion.button
                   key={filter}
                   className="flex items-center gap-2 rounded-full border border-[#cfd2d8] px-3 py-1 text-sm font-medium text-[#1f1f21]"
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   {filter} <span className="text-xs">▾</span>
-                </button>
+                </motion.button>
               ))}
             </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
+          </Reveal>
+          <Reveal delay={0.05} className="flex flex-wrap items-center gap-2">
             {tags.map((tag) => (
-              <span
+              <motion.span
                 key={tag}
                 className="inline-flex items-center gap-2 rounded-full border border-[#cfd2d8] px-3 py-1 text-sm text-[#1f1f21]"
+                whileHover={{ y: -2 }}
               >
                 {tag} <span className="text-xs">✕</span>
-              </span>
+              </motion.span>
             ))}
-            <button className="rounded-full border border-[#cfd2d8] px-3 py-1 text-sm text-[#1f1f21]">Clear All</button>
-          </div>
+            <motion.button
+              className="rounded-full border border-[#cfd2d8] px-3 py-1 text-sm text-[#1f1f21]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Clear All
+            </motion.button>
+          </Reveal>
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {posts.map((post) => (
-            <Link key={post.title} href={`/blog/${post.slug}`} className="flex flex-col gap-3">
-              <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={900}
-                  height={620}
-                  className="h-[280px] w-full object-cover"
-                />
-              </div>
-              <div className="text-xs font-semibold text-[#16a34a]">{post.date}</div>
-              <div className="flex items-start justify-between">
-                <h3 className="text-xl font-semibold text-[#0b0b0b]">{post.title}</h3>
-                <span className="text-lg">↗</span>
-              </div>
-              <p className="text-sm leading-6 text-[#3a3c40]">{post.excerpt}</p>
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-[#e5e7eb] px-3 py-1 text-xs font-semibold text-[#1f1f21]">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </Link>
+          {posts.map((post, index) => (
+            <Reveal key={post.title} delay={0.04 * index}>
+              <MotionLink
+                href={`/blog/${post.slug}`}
+                className="flex flex-col gap-3"
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 220, damping: 18 }}
+              >
+                <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.12)]">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={900}
+                    height={620}
+                    className="h-[280px] w-full object-cover"
+                  />
+                </div>
+                <div className="text-xs font-semibold text-[#16a34a]">{post.date}</div>
+                <div className="flex items-start justify-between">
+                  <h3 className="text-xl font-semibold text-[#0b0b0b]">{post.title}</h3>
+                  <span className="text-lg">↗</span>
+                </div>
+                <p className="text-sm leading-6 text-[#3a3c40]">{post.excerpt}</p>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <span key={tag} className="rounded-full bg-[#e5e7eb] px-3 py-1 text-xs font-semibold text-[#1f1f21]">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </MotionLink>
+            </Reveal>
           ))}
         </div>
 
         <div className="mt-10 flex items-center justify-center gap-1">
           {["«", "‹", 1, 2, 3, "…", 10, "›", "»"].map((label, idx) => (
-            <button
+            <motion.button
               key={`${label}-${idx}`}
               className={`flex h-6 min-w-[24px] items-center justify-center rounded-sm border border-black/10 text-xs font-semibold ${
                 label === 1 ? "bg-[#22c55e] text-black" : "bg-white text-black"
               }`}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
             >
               {label}
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>

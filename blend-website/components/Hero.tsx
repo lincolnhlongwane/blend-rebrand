@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import { heroContent } from "@/lib/data";
 
 export default function Hero() {
@@ -17,17 +21,22 @@ export default function Hero() {
 
       <div className="relative container-max">
         <div className="relative z-10 flex flex-col items-center gap-12 text-center text-white">
-          <div className="flex flex-col gap-4">
+          <Reveal className="flex flex-col gap-4">
             <h1 className="text-[2.8rem] font-bold leading-tight sm:text-[3.2rem] bg-gradient-to-r from-green-300 via-[#78d1ff] to-pink-400 bg-clip-text text-transparent">
               Empowering Connections Globally
             </h1>
             <p className="max-w-3xl text-lg leading-7 text-white/80">
               {heroContent.subtitle}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="relative w-full max-w-5xl rounded-[32px] bg-[#0c0c0f]/80 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.4)] ring-1 ring-white/5">
-            <div className="relative overflow-hidden rounded-[30px] bg-black">
+          <Reveal delay={0.1} className="w-full flex justify-center">
+            <motion.div
+              className="relative w-full max-w-5xl rounded-[32px] bg-[#0c0c0f]/80 p-4 shadow-[0_25px_60px_rgba(0,0,0,0.4)] ring-1 ring-white/5"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
+              <div className="relative overflow-hidden rounded-[30px] bg-black">
               <iframe
                 src="https://www.youtube.com/embed/1ZYbU82GVz4"
                 title="Relaxing music"
@@ -35,7 +44,7 @@ export default function Hero() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
-            </div>
+              </div>
 
             {/* <div className="absolute left-[-42px] top-1/2 hidden -translate-y-1/2 md:flex">
               <button
@@ -45,7 +54,8 @@ export default function Hero() {
                 👋
               </button>
             </div> */}
-          </div>
+            </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

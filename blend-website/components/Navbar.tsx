@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { MotionLink } from "@/components/MotionLink";
 import { navLinks } from "@/lib/data";
 
 export default function Navbar() {
@@ -20,36 +21,41 @@ export default function Navbar() {
 
               <nav className="hidden items-center gap-8 text-base font-semibold text-white/80 md:flex">
                 {navLinks.map((link, idx) => (
-                  <Link
+                  <MotionLink
                     key={link.label}
                     href={link.href}
                     className={`transition-colors hover:text-white ${idx === 0 ? "text-white" : ""}`}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {link.label}
-                  </Link>
+                  </MotionLink>
                 ))}
                               <div className="hidden md:block">
-                <Link
+                <MotionLink
                   href="/contact"
                   className="inline-flex h-11 items-center justify-center rounded-full border-2 border-black/20 bg-gradient-to-r from-[#fa5fa5] to-[#f847a6] px-6 text-base font-semibold text-white shadow-[0_10px_20px_rgba(0,0,0,0.25)]"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   Contact
-                </Link>
+                </MotionLink>
               </div>
               </nav>
 
 
 
-              <button
+              <motion.button
                 type="button"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
                 onClick={() => setOpen((prev) => !prev)}
                 aria-label="Toggle navigation"
+                whileTap={{ scale: 0.95 }}
               >
                 <span className="block h-0.5 w-5 bg-white"></span>
                 <span className="mt-1 block h-0.5 w-5 bg-white"></span>
                 <span className="mt-1 block h-0.5 w-4 bg-white"></span>
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
@@ -58,23 +64,26 @@ export default function Navbar() {
           <div className="mt-2 rounded-3xl bg-[#0c0d13] p-4 text-white shadow-xl md:hidden">
             <nav className="flex flex-col gap-3 text-sm font-medium text-white/80">
               {navLinks.map((link) => (
-                <Link
+                <MotionLink
                   key={link.label}
                   href={link.href}
                   className="rounded-full px-3 py-2 transition-colors hover:bg-white/5 hover:text-white"
                   onClick={() => setOpen(false)}
+                  whileHover={{ x: 4 }}
                 >
                   {link.label}
-                </Link>
+                </MotionLink>
               ))}
             </nav>
-            <Link
+            <MotionLink
               href="#contact"
               className="mt-4 w-full pill-button pill-primary justify-center"
               onClick={() => setOpen(false)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
             >
               Contact Us
-            </Link>
+            </MotionLink>
           </div>
         )}
       </div>

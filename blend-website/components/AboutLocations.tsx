@@ -2,6 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 type Slide = {
   title: string;
@@ -63,7 +66,7 @@ export default function AboutLocations() {
   return (
     <section id="about" className="bg-white py-16">
       <div className="container-max flex flex-col items-center gap-10 md:flex-row md:items-center md:justify-between">
-        <div className="relative flex h-full w-full justify-center md:w-1/2">
+        <Reveal className="relative flex h-full w-full justify-center md:w-1/2">
           <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
             <Image
               src="/gradients.png"
@@ -76,9 +79,10 @@ export default function AboutLocations() {
 
           <div className="relative w-full max-w-xl">
             {stackImages.map(({ slide, className }, idx) => (
-              <div
+              <motion.div
                 key={`${slide.subtitle}-${idx}`}
                 className={`absolute z-0 overflow-hidden rounded-[38px] shadow-[0_25px_60px_rgba(0,0,0,0.28)] ${className}`}
+                whileHover={{ rotate: idx === 0 ? -1 : 1 }}
               >
                 <Image
                   src={slide.image}
@@ -87,10 +91,14 @@ export default function AboutLocations() {
                   height={780}
                   className="h-[420px] w-[320px] rounded-[38px] object-cover"
                 />
-              </div>
+              </motion.div>
             ))}
 
-            <div className="relative z-10 overflow-hidden rounded-[38px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] ring-1 ring-black/10">
+            <motion.div
+              className="relative z-10 overflow-hidden rounded-[38px] shadow-[0_28px_70px_rgba(0,0,0,0.36)] ring-1 ring-black/10"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
               <Image
                 src={current.image}
                 alt={current.subtitle}
@@ -99,11 +107,11 @@ export default function AboutLocations() {
                 className="h-[460px] w-full rounded-[38px] object-cover sm:h-[520px]"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="flex w-full flex-col gap-4 text-[#1a1a1a] md:w-1/2">
+        <Reveal delay={0.05} className="flex w-full flex-col gap-4 text-[#1a1a1a] md:w-1/2">
           <h3 className="text-2xl font-semibold text-[#1d1d1f]">{current.title}</h3>
           <h4 className="text-xl font-semibold text-[#2d2d2f]">{current.subtitle}</h4>
           <p className="max-w-xl text-base leading-relaxed text-[#3c3f46]">{current.description}</p>
@@ -114,22 +122,26 @@ export default function AboutLocations() {
           </div>
 
           <div className="mt-0 flex items-center gap-4">
-            <button
+            <motion.button
               onClick={handlePrev}
               aria-label="Previous about slide"
               className="flex h-12 w-12 items-center justify-center rounded-full border border-white bg-[#0f0f12] text-white shadow-[0_10px_24px_rgba(0,0,0,0.25)] ring-1 ring-white/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              ‹
-            </button>
-            <button
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            </motion.button>
+            <motion.button
               onClick={handleNext}
               aria-label="Next about slide"
               className="flex h-12 w-12 items-center justify-center rounded-full border border-white bg-[#0f0f12] text-white shadow-[0_10px_24px_rgba(0,0,0,0.25)] ring-1 ring-white/30"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              ›
-            </button>
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </motion.button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

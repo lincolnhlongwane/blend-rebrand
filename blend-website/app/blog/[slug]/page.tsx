@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -53,11 +57,16 @@ const BlogDetailsPage = () => {
 
       <section className="container-max pb-20 pt-12">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-16">
-          <aside className="hidden w-full max-w-[320px] flex-shrink-0 space-y-6 lg:block">
+          <Reveal className="hidden w-full max-w-[320px] flex-shrink-0 space-y-6 lg:block">
             <h2 className="text-lg font-semibold">Recent blog posts</h2>
             <div className="space-y-6">
               {recentPosts.map((post) => (
-                <article key={post.title} className="space-y-3">
+                <motion.article
+                  key={post.title}
+                  className="space-y-3"
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                >
                   <div className="overflow-hidden rounded-[14px] shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
                     <Image
                       src={post.image}
@@ -73,16 +82,20 @@ const BlogDetailsPage = () => {
                     <span className="text-base">↗</span>
                   </div>
                   <p className="text-xs leading-5 text-[#4d4f55]">{post.excerpt}</p>
-                </article>
+                </motion.article>
               ))}
             </div>
-          </aside>
+          </Reveal>
 
-          <article className="min-w-0 flex-1 space-y-6">
+          <Reveal className="min-w-0 flex-1 space-y-6">
             <p className="text-xs font-semibold text-[#6c5ce7]">Sunday , 1 Jan 2023</p>
             <h1 className="text-3xl font-semibold leading-tight md:text-[2.4rem]">How does design even help?</h1>
 
-            <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]">
+            <motion.div
+              className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
               <Image
                 src="/placeholders/blog-1.svg"
                 alt="Blog hero"
@@ -90,7 +103,7 @@ const BlogDetailsPage = () => {
                 height={560}
                 className="h-[260px] w-full object-cover md:h-[340px]"
               />
-            </div>
+            </motion.div>
 
             <div className="space-y-4 text-sm leading-6 text-[#2f3137]">
               {paragraphs.map((text) => (
@@ -102,7 +115,11 @@ const BlogDetailsPage = () => {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]">
+            <motion.div
+              className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
               <Image
                 src="/placeholders/blog-3.svg"
                 alt="Team working"
@@ -110,7 +127,7 @@ const BlogDetailsPage = () => {
                 height={560}
                 className="h-[260px] w-full object-cover md:h-[340px]"
               />
-            </div>
+            </motion.div>
             <p className="text-center text-xs text-[#4a4a4a]">
               Definition: A grid is made up of columns, gutters, and margins that provide a structure for the layout of
               elements on a page.
@@ -156,7 +173,11 @@ const BlogDetailsPage = () => {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]">
+            <motion.div
+              className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
               <Image
                 src="/placeholders/blog-4.svg"
                 alt="Studio workspace"
@@ -164,7 +185,7 @@ const BlogDetailsPage = () => {
                 height={560}
                 className="h-[260px] w-full object-cover md:h-[340px]"
               />
-            </div>
+            </motion.div>
             <p className="text-center text-xs text-[#4a4a4a]">
               Three elements make up any grid: (1) columns, (2) gutters, and (3) margins.
             </p>
@@ -180,7 +201,11 @@ const BlogDetailsPage = () => {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]">
+            <motion.div
+              className="overflow-hidden rounded-[18px] shadow-[0_12px_28px_rgba(0,0,0,0.15)]"
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 18 }}
+            >
               <Image
                 src="/placeholders/blog-5.svg"
                 alt="Greenhouse workspace"
@@ -188,7 +213,7 @@ const BlogDetailsPage = () => {
                 height={560}
                 className="h-[260px] w-full object-cover md:h-[340px]"
               />
-            </div>
+            </motion.div>
 
             <div className="space-y-4 text-sm leading-6 text-[#2f3137]">
               <p>
@@ -211,7 +236,12 @@ const BlogDetailsPage = () => {
               <h2 className="text-lg font-semibold">Recent blog posts</h2>
               <div className="flex gap-4 overflow-x-auto pb-2">
                 {recentPosts.map((post) => (
-                  <article key={post.title} className="min-w-[220px] space-y-3">
+                  <motion.article
+                    key={post.title}
+                    className="min-w-[220px] space-y-3"
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                  >
                     <div className="overflow-hidden rounded-[14px] shadow-[0_10px_20px_rgba(0,0,0,0.15)]">
                       <Image
                         src={post.image}
@@ -227,11 +257,11 @@ const BlogDetailsPage = () => {
                       <span className="text-base">↗</span>
                     </div>
                     <p className="text-xs leading-5 text-[#4d4f55]">{post.excerpt}</p>
-                  </article>
+                  </motion.article>
                 ))}
               </div>
             </div>
-          </article>
+          </Reveal>
         </div>
       </section>
 

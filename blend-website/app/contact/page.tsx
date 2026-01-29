@@ -1,6 +1,10 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const ContactPage = () => {
   return (
@@ -9,7 +13,7 @@ const ContactPage = () => {
 
       <section className="container-max py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-[1fr,1.2fr]">
-          <div className="flex flex-col justify-start gap-8">
+          <Reveal className="flex flex-col justify-start gap-8">
             <div>
               <h1 className="text-4xl font-semibold md:text-5xl">
                 <span className="text-[#3aa6b4]">Let&apos;s </span>
@@ -34,32 +38,38 @@ const ContactPage = () => {
             <div>
               <h2 className="text-2xl font-semibold">Socials</h2>
               <div className="mt-4 flex items-center gap-3">
-                <a
+                <motion.a
                   href="#"
                   aria-label="Instagram"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Instagram className="h-4 w-4" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   aria-label="Facebook"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Facebook className="h-4 w-4" />
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="#"
                   aria-label="LinkedIn"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   <Linkedin className="h-4 w-4" />
-                </a>
+                </motion.a>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="rounded-[12px] bg-white">
+          <Reveal delay={0.05} className="rounded-[12px] bg-white">
             <form className="grid gap-5">
               <label className="grid gap-2 text-sm font-medium text-[#33363f]">
                 Company Name
@@ -148,14 +158,16 @@ const ContactPage = () => {
                 />
               </label>
 
-              <button
+              <motion.button
                 type="submit"
                 className="mt-2 flex h-12 w-full items-center justify-center rounded-md bg-black text-sm font-semibold text-white shadow-[0_14px_30px_rgba(0,0,0,0.25)]"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
               >
                 Submit
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </Reveal>
         </div>
       </section>
 

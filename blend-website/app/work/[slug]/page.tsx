@@ -2,7 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
+import { MotionLink } from "@/components/MotionLink";
 
 const tabs = ["Context", "Problem", "Process", "Solution", "Takeaway"] as const;
 type TabKey = (typeof tabs)[number];
@@ -65,34 +67,42 @@ export default function WorkDetailPage() {
   return (
     <main className="min-h-screen bg-[#0b0b0d] text-white">
       <div className="container-max relative pb-20 pt-12">
-        <Link
+        <MotionLink
           href="/work"
           aria-label="Close"
           className="absolute right-3 top-6 text-2xl text-white/70 transition-colors hover:text-white"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
         >
           x
-        </Link>
+        </MotionLink>
 
-        <div className="space-y-3">
+        <Reveal className="space-y-3">
           <h1 className="text-3xl font-semibold md:text-4xl">Google</h1>
           <p className="max-w-2xl text-sm text-white/70">
             The key to great ideas is not in having them, but acting on them.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="relative mt-16 flex items-center justify-center">
+        <Reveal delay={0.05} className="relative mt-16 flex items-center justify-center">
           <div className="absolute right-16 top-1/2 hidden h-[220px] w-[220px] -translate-y-1/2 rounded-full bg-gradient-to-br from-white/40 via-white/20 to-white/5 blur-[2px] md:block" />
 
-          <button
+          <motion.button
             type="button"
             onClick={handlePrev}
             aria-label="Previous image"
             className="absolute left-0 hidden h-10 w-10 -translate-x-1/2 items-center justify-center rounded-full bg-white text-black shadow-[0_12px_28px_rgba(0,0,0,0.35)] md:flex"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
           >
             ←
-          </button>
+          </motion.button>
 
-          <div className="relative w-full max-w-[560px] overflow-hidden rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+          <motion.div
+            className="relative w-full max-w-[560px] overflow-hidden rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+            whileHover={{ scale: 1.01 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          >
             <Image
               src={images[imageIndex]}
               alt="Project highlight"
@@ -100,19 +110,21 @@ export default function WorkDetailPage() {
               height={620}
               className="h-[240px] w-full object-cover sm:h-[280px] md:h-[320px]"
             />
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
             type="button"
             onClick={handleNext}
             aria-label="Next image"
             className="absolute right-0 hidden h-10 w-10 translate-x-1/2 items-center justify-center rounded-full bg-white text-black shadow-[0_12px_28px_rgba(0,0,0,0.35)] md:flex"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
           >
             →
-          </button>
-        </div>
+          </motion.button>
+        </Reveal>
 
-        <div className="mt-12 flex items-center justify-center gap-4">
+        <Reveal delay={0.1} className="mt-12 flex items-center justify-center gap-4">
           <p className="max-w-xl text-sm leading-6 text-white/75">{tabContent[activeTab].body}</p>
 
           {tabContent[activeTab].showStats ? (
@@ -125,11 +137,11 @@ export default function WorkDetailPage() {
               ))}
             </div>
           ) : null}
-        </div>
+        </Reveal>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center justify-center gap-3">
           {tabs.map((tab) => (
-            <button
+            <motion.button
               key={tab}
               type="button"
               onClick={() => handleTabChange(tab)}
@@ -138,11 +150,13 @@ export default function WorkDetailPage() {
                   ? "border-white bg-white text-black"
                   : "border-white/40 bg-transparent text-white/80 hover:border-white"
               }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {tab}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </Reveal>
       </div>
     </main>
   );

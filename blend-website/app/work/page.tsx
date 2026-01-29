@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
+import { MotionLink } from "@/components/MotionLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -50,34 +54,44 @@ export default function WorkPage() {
       <Navbar />
       <div className="container-max pb-16 pt-12">
         <div className="grid gap-12 md:grid-cols-[1.1fr,1fr]">
-          <div className="flex flex-col gap-4">
+          <Reveal className="flex flex-col gap-4">
             <h1 className="text-4xl font-semibold leading-tight sm:text-[2.6rem]">Case Studies</h1>
             <p className="max-w-xl text-base leading-relaxed text-white/80">
               Our success stories showcase innovative solutions brought to life with precision and creativity.
             </p>
-          </div>
-          <div className="flex flex-col gap-3">
+          </Reveal>
+          <Reveal delay={0.05} className="flex flex-col gap-3">
             <span className="text-sm font-semibold uppercase tracking-wide text-white/70">Filter By Type</span>
             <div className="flex flex-wrap items-center gap-2">
               {filters.map((filter) => (
-                <span
+                <motion.span
                   key={filter}
                   className="inline-flex items-center gap-2 rounded-full border border-white/30 px-3 py-1 text-sm text-white/90"
+                  whileHover={{ y: -2 }}
                 >
                   {filter} <span className="text-xs">✕</span>
-                </span>
+                </motion.span>
               ))}
-              <button className="rounded-full border border-white/30 px-3 py-1 text-sm text-white/80">Clear All</button>
+              <motion.button
+                className="rounded-full border border-white/30 px-3 py-1 text-sm text-white/80"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Clear All
+              </motion.button>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {workItems.map((item) => (
-            <Link
+          {workItems.map((item, index) => (
+            <Reveal key={item.title} delay={0.05 * index}>
+              <MotionLink
               key={item.title}
               href={`/work/${item.slug}`}
               className="relative overflow-hidden rounded-[24px] bg-white/5 shadow-[0_18px_48px_rgba(0,0,0,0.4)]"
+              whileHover={{ y: -6, scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 220, damping: 18 }}
             >
               <Image
                 src={item.image}
@@ -101,21 +115,24 @@ export default function WorkPage() {
                   </span>
                 ))}
               </div>
-            </Link>
+              </MotionLink>
+            </Reveal>
           ))}
         </div>
 
         <div className="mt-10 flex justify-center gap-3">
           {[1, 2, 3].map((page) => (
-            <button
+            <motion.button
               key={page}
               className={`flex h-6 w-6 items-center justify-center rounded-full border border-black/10 text-xs font-semibold ${
                 page === 1 ? "bg-[#35cd82] text-black" : "bg-white text-black"
               }`}
               aria-label={`Page ${page}`}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
             >
               {page}
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
