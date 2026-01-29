@@ -1,3 +1,4 @@
+import { Instagram, Monitor, Plus } from "lucide-react";
 import { servicesContent } from "@/lib/data";
 
 export default function Services() {
@@ -19,8 +20,11 @@ export default function Services() {
 
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-3 rounded-3xl bg-[#0f0f12] p-6 text-white shadow-pill">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
               <h3 className="text-xl font-semibold">{servicesContent.digitalLabel}</h3>
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-cyan-400 to-pink-500">
+                <Monitor className="h-4 w-4 text-white" aria-hidden="true" />
+              </span>
             </div>
             <div className="flex flex-col gap-2">
               {servicesContent.digital.map((item) => (
@@ -29,14 +33,17 @@ export default function Services() {
                   className="flex items-center justify-between rounded-full bg-[#15151b] px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white/90"
                 >
                   <span>{item}</span>
-                  <span className="h-2 w-2 rounded-full bg-white"></span>
+                  <Plus className="h-4 w-4 text-white/80" aria-hidden="true" />
                 </div>
               ))}
             </div>
           </div>
           <div className="flex flex-col gap-3 rounded-3xl bg-[#0f0f12] p-6 text-white shadow-pill">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
               <h3 className="text-xl font-semibold">{servicesContent.experientialLabel}</h3>
+              <span className="inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-pink-500 to-indigo-500">
+                <Instagram className="h-4 w-4 text-white" aria-hidden="true" />
+              </span>
             </div>
             <div className="flex flex-col gap-2">
               {servicesContent.experiential.map((item) => (
@@ -45,7 +52,7 @@ export default function Services() {
                   className="flex items-center justify-between rounded-full bg-[#15151b] px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white/90"
                 >
                   <span>{item}</span>
-                  <span className="h-2 w-2 rounded-full bg-white"></span>
+                  <Plus className="h-4 w-4 text-white/80" aria-hidden="true" />
                 </div>
               ))}
             </div>
